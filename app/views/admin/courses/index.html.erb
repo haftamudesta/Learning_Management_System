@@ -1,0 +1,15 @@
+<div class="w-full">
+<p style="color: green"><%= notice %></p>
+<div class="flex justify-end items-center">
+  <%= link_to "New course", new_admin_course_path,class:"bg-red-300 text-white-50 hover:bg-green-400 px-4 py-1 rounded-lg" %>
+</div>
+
+<div id="admin_courses" class="min-w-full flex flex-wrap justify-center gap-5 mt-6 mb-4">
+  <% @admin_courses.each do |admin_course| %>
+    <%= render admin_course %>
+  <% end %>
+</div>
+
+
+
+</div>

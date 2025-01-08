@@ -1,0 +1,19 @@
+<div id="<%= dom_id course %>" class="max-w-xs rounded overflow-hidden shadow-lg">
+<% if course.image.present?%>
+<%= image_tag course.image, class:"w-full"%>
+<% else %>
+<%= image_tag("https://via.placeholder.com/100")%>
+<% end %>
+<div class="px-4 py-4">
+        <div class="font-bold text-xl mb-6">
+                <%= course.title%>
+        </div>
+        <div class="font-bold text-xl mb-6">
+                <%= course.description%>
+        </div>
+        <div>
+                 <%= link_to "Edit Course",edit_admin_course_path(course),class:"bg-purple-300 text white-50 font-bold px-4 py-2 rounded"%>
+                <%= link_to "View Lessons",admin_course_lessons_path(course),class:"bg-purple-300 text white-50 font-bold px-4 py-2 rounded"%>
+        </div>
+</div>
+</div>

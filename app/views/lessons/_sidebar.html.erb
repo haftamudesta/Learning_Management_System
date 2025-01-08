@@ -1,0 +1,18 @@
+<div class="shadow-lg">
+  <% course.lessons.order(:position).each do |lesson|%>
+        <% if lesson.paid && !paid_for_course%>
+          <div class="rounded p-6 hover:bg-gray-400">
+            <div>
+              <h2>Locked <span><%= lesson.title%></span></h2>
+            </div>
+          </div>
+        <% else %>
+           <%= link_to course_lesson_path do%>
+                <div class="rounded p-2 hover:bg-gray-400  <%= @lesson.id == lesson.id ? 'bg-green-300' :''%>">
+                <%= completed_lessons.include?(lesson.id)? "completed":nil%>
+               <span><%=lesson.title%></span>
+                </div>
+            <% end %>
+        <% end %>
+  <% end %>
+</div>

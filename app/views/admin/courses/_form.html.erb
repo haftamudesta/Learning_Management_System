@@ -1,0 +1,49 @@
+<div class="flex justify-center items-center shadow-lg bg-gray-300 px-6 py-2 ml-[400px]">
+<%= form_with(model: [:admin, admin_course]) do |form| %>
+  <% if admin_course.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(admin_course.errors.count, "error") %> prohibited this admin_course from being saved:</h2>
+
+      <ul>
+        <% admin_course.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="flex flex-col">
+    <label class="text-sm" for="name">Title:</label>
+    <%= form.text_field :title,class:"rounded border-green-200",placeholder:"Course Title"%>
+  </div>
+  <div class="flex flex-col mt-4">
+    <label class="text-sm" for="name">Description:</label>
+    <%= form.text_field :description,class:"rounded border-green-200",placeholder:"Course Description"%>
+  </div>
+  <div class="flex flex-col">
+    <label class="text-sm" for="name">Stripe_Price_id:</label>
+    <%= form.text_field :stripe_price_id,class:"rounded border-green-200",placeholder:"stripe price id"%>
+  </div>
+  <div class="flex flex-col mt-4">
+    <%= admin_course.image.present? ? (image_tag admin_course.image ,class:"rounded border-green-200"):nil%>
+    <label class="text-sm" for="cove-image">Cover-Image:</label>
+    <%= form.file_field :image,id:"image"%>
+  </div>
+  <div class="flex mt-2 gap-4">
+    <label class="text-sm" for="paid">Paid:</label>
+    <%= form.check_box :paid,id:"paid",class:"rounded border-green-200",placeholder:"stripe price id"%>
+  </div>
+  <div class="flex flex-col mt-4">
+    <label class="text-sm" for="premium-description">Premium_Description:</label>
+    <%= form.text_field :premium_description,class:"rounded border-green-200",placeholder:"Course Premium Description"%>
+  </div>
+  <div class="flex gap-6 mt-4 justify-start items-center">
+    <div>
+      <%= form.submit "Submit", class: "bg-sky-300 px-4 py-2 rounded-lg cursor-pointer hover:bg-red-200 hover:rounded-full"%>
+    </div>
+    <div>
+    <%= link_to "Back to courses", admin_courses_path , class: "bg-sky-300 px-4 py-2 rounded-lg cursor-pointer"%>
+  </div>
+  </div>
+<% end %>
+
+</div>

@@ -1,0 +1,52 @@
+<div class="flex flex-col lg:ml-6">
+   <div class="mt-6 lg:mt-0 flex justify-center items-center w-full">
+     <div class="bg-white rounded-lg shadow-lg overflow-hidden w-full">
+       <div class="p-4 bg-pink-400">
+          <h2 class="text-2xl font-bold text-white-50">Start Learning</h2>
+       </div>
+       <div class="p-4">
+          <% if user_signed_in? %>
+          <% if @completed_lessons&.any?%>
+                <% if @completed_lessons.count== @course.lessons.count %>
+                     <p>
+                        congratulations, you have completed  the course.
+                     </p>
+                     <%= link_to "Restart Course",course_lesson_path(@course,@course.first_lesson),class: "bg-revolver-600 hover:revolver-700 text-whit-50 px-4 py-2 rounded font-bold"%>
+                <% else %>
+                    <p>Continue to  the course and start where you stop</p>
+                     <%= link_to "Continue to Course",course_lesson_path(@course,@course.next_lesson(current_user)),class: "bg-revolver-600 hover:revolver-700 text-whit-50 px-4 py-2 rounded font-bold"%>
+                <%end%>
+          <%else%>
+            <p>Start the course</p>
+            <%= link_to "Start Course",course_lesson_path(@course,@course.first_lesson),class: "bg-revolver-600 hover:revolver-700 text-whit-50 px-4 py-2 rounded font-bold"%>
+          <% end %>
+          <% else %>
+          <p>Sign Up for free</p>
+          <%= link_to "Sign Up",new_user_registration_path,class:"bg-pink-400 hover:bg-pink-600 text-white-50 px-4 py-0.5 rounded-full font-bold" %>
+          <% end %>
+       </div>
+       <% if !@course.paid %>
+         <div class="mt-6 flex justify-center items-center w-full">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden w-full">
+               <div class="p-4 bg-sleat-500">
+               <h2 class="text-white-50 text-2xl font-bold">Get more content</h2>
+               </div>
+               <div class="p-4">
+                  <% if user_signed_in?%>
+                     <p class="mb-4 text-base text-gray-300">Unlock more contents bt perchasing the course</p>
+                     <%= form_tag checkouts_path(@course), method: :post,data: {turbo: false},class:"mt-4" do%>
+                        <%= hidden_field_tag :course_id,@course.id%>
+                        <%= hidden_field_tag :stripeEmail,current_user.email%>
+                        <%= button_tag "Unlock Full Course", class:"bg-purple-400 text-white-50 font-bold py-2 px-4 rounded focus:ouline-none focus:shadow-outline w-full transition:eas-in-out duration-150"%>
+                     <% end %>
+                  <% else %>
+                    <p>Sign Up for free</p>
+                     <%= link_to "Sign Up",new_user_registration_path,class:"bg-purple-600 hover:bg-purple-800 text-white-50 px-4 py-0.5 rounded-full font-bold" %>
+                  <% end %>
+               </div>
+            </div>
+         </div>
+       <%end%>
+     </div>
+   </div>
+</div>

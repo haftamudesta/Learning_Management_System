@@ -1,0 +1,23 @@
+<div id="<%= dom_id course %>" class="max-w-sm rounded-b overflow-hidden shadow-lg p-4 bg-sky-300 hover:bg-teal-500">
+  <%= link_to course, class:"flex flex-col h-full" do%>
+    <% if course.image.attached?%>
+    <%= image_tag(course.image)%>
+  <% end %>
+
+  <% if course.video.attached?%>
+    <%= video_tag url_for(course.video),controls: true%>
+  <% end %>
+    <div class="flex flex-col px-6 py-4 justify-between grew">
+      <div>
+         <div>
+         <%= course.title %>
+         <% if user_unlocked_courses&.include? course.id%>
+         <span>Course Unlocked</span>
+         <% end %>
+         </div> 
+         <p>Haftamu Desta</p> 
+         <p><%= course.paid ? "Premium Content":"Free"%></p>
+      </div>
+    </div>
+  <%end%>
+</div>

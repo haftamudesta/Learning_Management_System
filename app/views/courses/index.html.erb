@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Courses</h1>
+
+<div id="courses" class="flex flex-wrap gap-14">
+  <% @courses.each do |course| %>
+    <%= render course, user_unlocked_courses:@user_unlocked_courses %>
+  <% end %>
+</div>
+
+<%= link_to "New course", new_course_path %>

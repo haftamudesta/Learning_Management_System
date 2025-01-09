@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :courses do
       resources :lessons
     end
+    resources :users
   end
   patch '/admin/courses/:course_id/lessons/:id/move'=>'admin/lessons#move'
 end

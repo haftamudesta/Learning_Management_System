@@ -1,0 +1,62 @@
+<div class="flex flex-col justfiy-center items-center w-full">
+  <p style="color: green"><%= notice %></p>
+  <h1> All Users</h1>
+
+  <div class="flex flex-col md:fles-row mb-6 justfiy-end gap-6">
+  <%= form_with url: admin_users_path, method: :get,class:"flex" do |form|%>
+  <%=form.text_field :query,placeholder: "Search By Email",class:"rounded border-green-600 text-gray-300"%>
+  <%=form.submit "Search",class:"cursor-pointer bg-red-500 px-4 ml-2 " %>
+  <% end %>
+
+  <%= form_with url: admin_users_path, method: :get,class:"flex" do |form|%>
+    <%=form.submit "Clear Search",class:"cursor-pointer bg-red-300 px-4  ml-0"%>
+    <% end %>
+</div>
+
+  <div id="admin_users">
+  <div class="w-full overflow-x-auto">
+  <table class="min-w-full bg-purple-400" style="border-collaps: separate;border-spacing:0">
+  <thead>
+          <tr>
+            <th class="px-4 py-2 border-b-2 border-green-600 text-start bg-sky-600">
+              
+            </th>
+            <th class="px-4 py-2 border-b-2 border-green-600 text-start bg-sky-600">
+              Email
+            </th>
+            <th class="px-4 py-2 border-b-2 border-green-600 text-start bg-sky-600">
+              Created At
+            </th>
+            <th class="px-4 py-2 border-b-2 border-green-600 text-start bg-sky-600">
+              Updated At
+            </th>
+            <th class="px-4 py-2 border-b-2 border-green-600 text-start bg-sky-600">
+              Action
+            </th>
+          </tr>
+  </thead>
+  <tbody class="text-gray-800">
+          <%@admin_users.each do |user|%>
+                  <tr>
+                    <td class="px-6 py-4 border-b border-gray-200">
+                      <%= link_to user.id, admin_user_path(user) ,class:"underline"%> 
+                    </td>
+                    <td class="px-6 py-4 border-b border-gray-200">
+                      <%= user.email%> 
+                    </td>
+                    <td class="px-6 py-4 border-b border-gray-200">
+                      <%= user.created_at.to_formatted_s(:long)%> 
+                    </td>
+                    <td class="px-6 py-4 border-b border-gray-200">
+                      <%= user.updated_at.to_formatted_s(:long)%> 
+                    </td>
+                    <td class="px-6 py-4 border-b border-gray-200">
+                      <%= button_to "deete",[:admin, user], method: :delete, data: {'turbo-confrim': "Are you sure you want to delete this user"},class:"text-red-600"%> 
+                    </td>
+                  </tr>
+          <% end %>
+  </tbody>
+</table>
+  </div>
+ </div>
+</div>

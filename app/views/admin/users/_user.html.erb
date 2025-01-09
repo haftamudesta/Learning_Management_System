@@ -1,0 +1,47 @@
+<div id="<%= dom_id user %>">
+        <div class="flex gap-4 items-center mb-6">
+          <h2 class="text-2xl font-bold">User Email:</h2>
+          <%= user.email%>
+        </div>
+        <div class="mt-6">
+        <h2 class="text-2xl text-gray-400 font-bold mb-4 underline">Courses Taken By the User</h2>
+        <table class="min-w-full bg-purple-400" style="border-collaps: separate;border-spacing:0">
+        <thead>
+                <tr>
+                        <th class="px-4 py-2 border-b-2 border-green-600 text-start bg-sky-600">
+                                Course Title
+                        </th>
+                        <th class="px-4 py-2 border-b-2 border-green-600 text-start bg-sky-600">
+                                Completed Percentage
+                        </th>
+                        <th class="px-4 py-2 border-b-2 border-green-600 text-start bg-sky-600">
+                                Paid
+                        </th>
+                        <th class="px-4 py-2 border-b-2 border-green-600 text-start bg-sky-600">
+                                Action
+                        </th>
+                </tr>
+        </thead>
+        <tbody class="text-gray-800">
+                <% @admin_courses.each do |course|%>
+                        
+                        <% user_paid=@admin_user.course_users.any? {|cu| cu.course_id==course.id}%>
+                        <tr>
+                            <td class="px-6 py-4 border-b border-gray-200">
+                               <%= course.title%> 
+                            </td>
+                            <td class="px-6 py-4 border-b border-gray-200">
+                               done 
+                            </td>
+                            <td class="px-6 py-4 border-b border-gray-200">
+                               <%= user_paid %> 
+                            </td>
+                            <td class="px-6 py-4 border-b border-gray-200">
+                               <%=  %> 
+                            </td>
+                        </tr>
+                <% end %>
+        </tbody>
+  </table>
+        </div>
+</div>

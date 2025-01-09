@@ -6,7 +6,8 @@ require 'active_support/core_ext/date'
                 @quick_status={
                         sign_ups:User.where('created_at > ?',1.week.ago).count,
                         sales:CourseUser.where('created_at  >?',1.week.ago).count,
-                        completedLessons:LessonUser.where('created_at >?',1.week.ago).where(completed: true).count
+                        completedLessons:LessonUser.where('created_at >?',1.week.ago).where(completed: true).count,
+                        totalSignUp:User.where('created_at >?',1.week.ago).count
                 }
                 @completedLessonsByDay=LessonUser.where('created_at >?',1.week.ago).where(completed: true).group("DATE(created_at)").count
 

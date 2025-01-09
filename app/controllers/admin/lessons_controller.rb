@@ -21,7 +21,7 @@ class Admin::LessonsController < AdminController
         def create
                 @admin_lesson=@admin_course.lessons.new(lesson_params) 
                 if @admin_lesson.save
-                redirect_to @admin_course_lessons_path
+                redirect_to admin_course_lessons_path
                 else
                         render :new
                 end

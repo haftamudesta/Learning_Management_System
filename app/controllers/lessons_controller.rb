@@ -9,12 +9,8 @@ class LessonsController < ApplicationController
   end
   def update
     @lesson_user=LessonUser.find_or_create_by(user: current_user,lesson: @lesson)
-    puts @lesson_user
     @lesson_user.update!(completed: true)
-    puts "next lesson"
     next_lesson=@course.lessons.where("position >?",@lesson.position).order(:position).first
-    puts "next lesson"
-    puts next_lesson
     if next_lesson
       redirect_to course_lesson_path(@course,next_lesson)
     else

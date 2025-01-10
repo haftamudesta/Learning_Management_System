@@ -1,4 +1,4 @@
-<div class="shadow-lg">
+<div >
   <% course.lessons.order(:position).each do |lesson|%>
         <% if lesson.paid && !paid_for_course%>
           <div class="rounded p-6 hover:bg-gray-400">

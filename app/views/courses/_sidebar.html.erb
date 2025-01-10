@@ -1,4 +1,4 @@
-<div class="flex flex-col lg:ml-6">
+<div class="flex flex-col mb-6">
    <div class="mt-6 lg:mt-0 flex justify-center items-center w-full">
      <div class="bg-white rounded-lg shadow-lg overflow-hidden w-full">
        <div class="p-4 bg-pink-400">
@@ -17,8 +17,8 @@
                      <%= link_to "Continue to Course",course_lesson_path(@course,@course.next_lesson(current_user)),class: "bg-revolver-600 hover:revolver-700 text-whit-50 px-4 py-2 rounded font-bold"%>
                 <%end%>
           <%else%>
-            <p>Start the course</p>
-            <%= link_to "Start Course",course_lesson_path(@course,@course.first_lesson),class: "bg-revolver-600 hover:revolver-700 text-whit-50 px-4 py-2 rounded font-bold"%>
+            <p class="mb-4">Start the course</p>
+            <%= link_to "Start Course",course_lesson_path(@course,@course.first_lesson),class: "bg-red-600 hover:bg-sky-500 text-whit-50 px-4 py-2 rounded font-bold"%>
           <% end %>
           <% else %>
           <p>Sign Up for free</p>

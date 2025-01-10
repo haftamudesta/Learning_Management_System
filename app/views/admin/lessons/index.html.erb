@@ -6,7 +6,7 @@
   <h2 class="text-2xl font-bold mb-4"><%= @admin_course.title%><span class="ml-2">Lessons</span></h2>
   <div data-controller="lesson" data-lesson-course-value="<%= @admin_course.id%>" data-sortable-animation-value="150" id="admin_lessons">
     <% @admin_lessons.each do |admin_lesson| %>
-        <div class="mac-w-xs" id="<%= admin_lesson.id %>">
+        <div class="max-w-xs" id="<%= admin_lesson.id %>">
         <%= link_to [:admin,@admin_course,admin_lesson] do %>
            <%= render admin_lesson %>
         <% end %>

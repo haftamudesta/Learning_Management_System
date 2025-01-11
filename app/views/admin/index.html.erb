@@ -1,7 +1,7 @@
-<div class="flex flex-col w-full justfiy-start md:justfiy-center items-center">
-        <h1 class="text-5xl font-bold text-gray-400 ">Welcome To Admin DashBoard</h1>
-        <div class="flex flex-col gap-8 justfiy-start md:justfiy-center items-center md:flex-row md:justfiy-between w-full">
-                <div class="max-w-sm rounded overflow-hidden md:w-48 shadow-lg bg-gradient-t-r from-blue-700 to-red-500">
+<div class="flex flex-col w-full justfiy-start md:justfiy-start items-center">
+        <h1 class="text-5xl font-bold text-gray-400 mb-4">Welcome To Admin DashBoard</h1>
+        <div class="flex flex-col gap-8 justfiy-start md:justfiy-start items-start md:flex-row md:justfiy-between w-full">
+                <div class="rounded overflow-hidden w-[300px] shadow-lg bg-gradient-to-r from-sky-200 to-sky-400 ">
                         <div class="px-6 py-2">
                                 <h2 class="text-2xl font-bold mb-2 text-start">
                                         Sign ups
@@ -9,7 +9,7 @@
                                 <%= @quick_status[:sign_ups]%>
                         </div>
                 </div>
-                <div class="max-w-sm rounded overflow-hidden md:w-48 shadow-lg bg-gradient-t-r from-red-400 to-red-300">
+                <div class="max-w-sm rounded overflow-hidden w-[300px] shadow-lg bg-gradient-to-r from-sky-200 to-sky-400">
                         <div class="px-6 py-2">
                                 <h2 class="text-2xl font-bold mb-2">
                                         Sales
@@ -17,7 +17,7 @@
                                 <%= @quick_status[:sales]%>
                         </div>
                 </div>
-                <div class="max-w-sm rounded overflow-hidden md:w-48 shadow-lg bg-gradient-t-r from-red-400 to-red-300">
+                <div class="max-w-sm rounded overflow-hidden w-[300px] shadow-lg bg-gradient-to-r from-sky-200 to-sky-400">
                         <div class="px-6 py-2">
                                 <h2 class="text-2xl font-bold mb-2">
                                         Lessons Completed
@@ -25,7 +25,7 @@
                                 <%= @quick_status[:completedLessons]%>
                         </div>
                 </div>
-                <div class="max-w-sm rounded overflow-hidden md:w-48 shadow-lg bg-gradient-t-r from-red-400 to-red-300">
+                <div class="max-w-sm rounded overflow-hidden w-[300px] shadow-lg bg-gradient-to-r from-sky-200 to-sky-400">
                         <div class="px-6 py-2">
                                 <h2 class="text-2xl font-bold mb-2">
                                         Total Sign Up
@@ -35,14 +35,14 @@
                  </div>
         </div>
         <div class="w-full flex flex-col justfiy-between items-center md:flex-row mt-8" data-controller="dashboard" data-dashboard-signups-value="" data-dashboard-completed-value="<%= @completedLessonsByDay.to_json%>">
-                <div class="w-full md:w-1/2 text-center my-4">
-                        <h2 class="text-2xl font-bold text-center my-4">
+                <div class="w-full md:w-1/2 text-start my-4">
+                        <h2 class="text-2xl font-bold  my-4">
                                 Completed Lessons
                         </h2>
                         <canvas id="chart"></canvas>
                 </div>
-                <div class="w-full md:w-1/2 text-center my-4">
-                        <h2 class="text-2xl font-bold text-center my-4">
+                <div class="w-full md:w-1/2 text-start my-4">
+                        <h2 class="text-2xl font-bold  my-4">
                                 Sign Ups
                         </h2>
                         <canvas id="chart"></canvas>
@@ -58,7 +58,7 @@
                         </tr>
                 </thead>
                 <tbody class="text-gray-800">
-                        <%= @mostPopularCourses.each do |course|%>
+                        <% @mostPopularCourses.each do |course|%>
                                 <tr>
                                     <td class="px-6 py-4 border-b border-gray-200">
                                        <%= course.title%> 

@@ -4,10 +4,14 @@ import {Chart,registerables} from 'chart.js';
 Chart.register(...registerables)
 export default class extends Controller {
   static values={completed: Object,signups: Object}
+  connect() {
+    console.log("Chart controller connected");
+  }
   initialize() {
     const data=Object.values(this.completedValue)
     const labels=Object.keys(this.completedValue)
     const ctx=document.getElementById("chart")
+    console.log(ctx)
     new Chart(ctx,{
       type:'line',
       data:{
@@ -46,8 +50,6 @@ export default class extends Controller {
       }
     })
   }
-
-
 
   static values={completed:Object,signups:Object}
   initialize() {
